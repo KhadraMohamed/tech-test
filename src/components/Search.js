@@ -1,13 +1,18 @@
 import React from "react";
 import { useState } from "react";
+import getImages from "../requests/getImages";
 import "../styles/search.css";
 
 const Search = () => {
     const [value, setValue] = useState();
+    const handleSubmit = (event) => {
+      event.prevemntDefault();
+      getImages(value);
+    };
     
     return (
       <>
-         <form className="search-form"> 
+         <form className="search-form" onSubmit={handleSubmit}>
            <input 
            className="search-input" 
            type="text" 
